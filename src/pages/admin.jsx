@@ -6,6 +6,10 @@ export default function admin() {
     const [user, setUser] = useState("");
   
     const addCity = async () => {
+      if(cityInput===""){
+        alert("Please add the city")
+        return 
+      }
       const url = `http://localhost:8000/citi`;
       
       console.log("url", url);
@@ -78,7 +82,8 @@ export default function admin() {
     }
     const handleCityInputChange = (event) => {
         
-        console.log(event.target.value)
+        console.log(event.target.value);
+      
       setCityInput(event.target.value);
     };
   
@@ -94,16 +99,29 @@ export default function admin() {
     
     return (
     <div className="admin" style={{marginTop:"20px"}}>
-     <h1>Login Form</h1>
+    
         
-      <label >City:</label>
+      {/* <label >City:</label>
       <input onChange={handleCityInputChange}  style={{border:"2px solid black"}} type="text"  required /><br/><br/>
 
       <label>Username</label>
       <input onChange={handleUserchange}  style={{border:"2px solid black"}} type="text"  required /><br/><br/>
       <label >Password</label>
       <input onChange={handleApiKeyChange} style={{border:"2px solid black"}} type="password" required /><br/><br/>
-      <button  onClick={btnCLick} style={{backgroundColor:"blue",padding:"10px 10px"}} >Add City</button>
+      <button  onClick={btnCLick} style={{backgroundColor:"blue",padding:"10px 10px"}} >Add City</button> */}
+        <label style={{fontSize:"20px", fontWeight:"bold"}}>City:</label>
+        <br></br>
+  <input onChange={handleCityInputChange} style={{border:"2px solid black", padding:"10px", borderRadius:"5px", margin:"10px 0"}} type="text"  required /><br/><br/>
+
+<label style={{fontSize:"20px", fontWeight:"bold"}}>Username:</label>
+<br></br>
+<input onChange={handleUserchange} style={{border:"2px solid black", padding:"10px", borderRadius:"5px", margin:"10px 0"}} type="text" required /><br/><br/>
+
+<label style={{fontSize:"20px", fontWeight:"bold"}}>Password:</label>
+<br></br>
+<input onChange={handleApiKeyChange} style={{border:"2px solid black", padding:"10px", borderRadius:"5px", margin:"10px 0"}} type="password" required /><br/><br/>
+
+<button onClick={btnCLick} style={{backgroundColor:"#007bff", color:"#fff", padding:"10px 20px", borderRadius:"5px", fontSize:"20px", fontWeight:"bold"}}>Add City</button>
    
       </div>
     )
